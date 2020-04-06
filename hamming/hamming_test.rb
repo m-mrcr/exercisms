@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+require 'pry'
 require_relative 'hamming'
 
 # Common test data version: 2.2.0 4c453c8
@@ -14,17 +15,17 @@ class HammingTest < Minitest::Test
   end
 
   def test_single_letter_different_strands
-    skip
+    # skip
     assert_equal 1, Hamming.compute('G', 'T')
   end
 
   def test_long_identical_strands
-    skip
+    # skip
     assert_equal 0, Hamming.compute('GGACTGAAATCTG', 'GGACTGAAATCTG')
   end
 
   def test_long_different_strands
-    skip
+    # skip
     assert_equal 9, Hamming.compute('GGACGGATTCTG', 'AGGACGGATTCT')
   end
 
@@ -36,7 +37,7 @@ class HammingTest < Minitest::Test
   end
 
   def test_disallow_second_strand_longer
-    skip
+    # skip
     assert_raises(ArgumentError) do
       Hamming.compute('ATA', 'AGTG')
     end
