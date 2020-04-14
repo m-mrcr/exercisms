@@ -1,20 +1,18 @@
 class Luhn
-  def self.valid?(num)
-    process(num) if num.match?(/^[0-9 ]*$/) && num.scan(/\d/).count > 1
-  end
-
-  def self.process(num)
-    num = num.gsub(/\s*/, '')
-          .split('')
+  def self.valid?(str)
+    return false unless str.match?(/^[\d ]*$/) && str.gsub(/\D/, '').length > 1
+    num = str.delete('^0-9')
+          .chars
           .reverse
           .each_with_index
-          .map {|val, i| i.odd? ? double(val) : val.to_i}
-          .sum
+          .reduce(0) do |acc, (val, i)| 
+            i.odd? ? acc += double(val.to_i) : acc += val.to_i
+          end
     num % 10 == 0
   end
 
   def self.double(num)
-    double = num.to_i * 2
-    double > 9 ? double - 9 : double
+    num += num
+    num > 9 ? num - 9 : num
   end
 end
