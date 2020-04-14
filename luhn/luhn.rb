@@ -1,9 +1,7 @@
 class Luhn
   def self.valid?(num)
-    process(num) if num.match?(/^[0-9 ]*$/) && num.scan(/\d/).count > 1
-  end
-
-  def self.process(num)
+    return false unless num.match?(/^[0-9 ]*$/) && num.gsub(/\s*/, '').length > 1
+    
     num = num.gsub(/\s*/, '')
           .chars
           .reverse
