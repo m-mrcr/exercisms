@@ -1,10 +1,11 @@
 require 'minitest/autorun'
+require 'pry'
 require_relative 'clock'
 
 # Common test data version: 2.4.0 b344762
 class ClockTest < Minitest::Test
   def test_on_the_hour
-    # skip
+    skip
     assert_equal "08:00", Clock.new(hour: 8).to_s
   end
 
@@ -104,8 +105,9 @@ class ClockTest < Minitest::Test
   end
 
   def test_add_minutes
-    skip
+    # skip
     clock1 = Clock.new(hour: 10, minute: 0)
+    binding.pry
     assert_equal "10:03", (clock1 + Clock.new(minute: 3)).to_s
   end
 
