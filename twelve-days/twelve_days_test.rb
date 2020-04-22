@@ -1,5 +1,4 @@
 require 'minitest/autorun'
-require 'pry'
 require_relative 'twelve_days'
 
 class TwelveDaysTest < Minitest::Test
