@@ -1,6 +1,6 @@
 class ArmstrongNumbers
   def self.include?(num)
-    num1 = num.digits
-    num1.sum { |d| d**num1.size } == num
+    nums = num.digits
+    nums.sum { |d| d**nums.size } == num
   end
 end
