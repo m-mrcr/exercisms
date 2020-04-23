@@ -1,5 +1,4 @@
 require 'minitest/autorun'
-require 'pry'
 require_relative 'armstrong_numbers'
 
 # Common test data version: 1.1.0 b3c2522
