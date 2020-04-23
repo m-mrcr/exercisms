@@ -1,8 +1,6 @@
 class ArmstrongNumbers
   def self.include?(num)
-    num
-      .digits
-      .inject(0) {|sum, n| sum += n**num.digits.count}
-      .eql?(num)
+    num1 = num.digits
+    num1.sum { |d| d**num1.size } == num
   end
 end
