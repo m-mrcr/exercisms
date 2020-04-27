@@ -1,8 +1,13 @@
-=begin
-Write your code for the 'Grains' exercise in this file. Make the tests in
-`grains_test.rb` pass.
+module Grains
+  module_function
 
-To get started with TDD, see the `README.md` file in your
-`ruby/grains` directory.
-=end
+  SQUARES = (2..64).map.with_object({1=>1}) {|n, h| h[n] = h[n-1] * 2}
 
+  def square(num)
+    SQUARES[num] ? SQUARES[num] : raise(ArgumentError)
+  end
+
+  def total
+    SQUARES.values.sum
+  end
+end
