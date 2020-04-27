@@ -1,8 +1,12 @@
-=begin
-Write your code for the 'Pangram' exercise in this file. Make the tests in
-`pangram_test.rb` pass.
+module Pangram
+  module_function
+  ABC = ("A".."Z").to_a
 
-To get started with TDD, see the `README.md` file in your
-`ruby/pangram` directory.
-=end
-
+  def pangram?(sentence)
+     ABC == sentence
+              .upcase
+              .scan(/[a-zA-Z]/)
+              .sort
+              .uniq
+  end
+end
