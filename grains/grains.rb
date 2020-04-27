@@ -1,7 +1,6 @@
 class Grains
   def self.square(num)
-    raise(ArgumentError) unless (1..64).include?(num)
-    2**(num-1)
+    (1..64).include?(num) ? 2**(num-1) : raise(ArgumentError)
   end
 
   def self.total
