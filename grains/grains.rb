@@ -1,13 +1,10 @@
-module Grains
-  module_function
-
-  SQUARES = (2..64).map.with_object({1=>1}) {|n, h| h[n] = h[n-1] * 2}
-
-  def square(num)
-    SQUARES[num] ? SQUARES[num] : raise(ArgumentError)
+class Grains
+  def self.square(num)
+    raise(ArgumentError) unless (1..64).include?(num)
+    2**(num-1)
   end
 
-  def total
-    SQUARES.values.sum
+  def self.total
+    2**64 - 1
   end
 end
