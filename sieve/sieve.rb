@@ -3,11 +3,11 @@ require 'prime'
 class Sieve
   def initialize(num)
     @num = num
-    @primes = []
   end
 
   def primes
-    Prime.each(@num) {|prime| @primes << prime}
-    @primes
+    arr = []
+    Prime.each(@num) {|prime| arr<<prime}
+    arr
   end
 end
