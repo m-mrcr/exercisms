@@ -5,7 +5,7 @@ module Pangram
   def pangram?(sentence)
      ABC == sentence
               .upcase
-              .scan(/[a-zA-Z]/)
+              .scan(/[A-Z]/)
               .sort
               .uniq
   end
