@@ -6,8 +6,6 @@ class Sieve
   end
 
   def primes
-    arr = []
-    Prime.each(@num) {|prime| arr<<prime}
-    arr
+    @num > 1 ? Prime.each(@num).with_object([]) {|prime, obj| obj << prime} : []
   end
 end
