@@ -1,11 +1,12 @@
-require 'prime'
-
 class Sieve
-  def initialize(num)
-    @num = num
+  def initialize(limit)
+    @limit = limit
   end
 
   def primes
-    @num > 1 ? Prime.each(@num).with_object([]) {|prime, obj| obj << prime} : []
+    set = (2..@limit).to_a
+    set.each { |p| p.upto(@limit) { |n| set.delete(p * n) } }
   end
 end
+
+
