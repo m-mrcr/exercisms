@@ -6,7 +6,7 @@ class Prime
     prime_count = 0
     (2..Math.sqrt(limit)).each do |i|
       if primes[i]
-        ((i+i)..limit).step(i) { |j| primes[j] = nil }
+        ((i+i)..limit).step(i) { |s| primes[s] = nil }
         prime_count += 1
       end
       break if prime_count == n
