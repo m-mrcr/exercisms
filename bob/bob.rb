@@ -1,10 +1,12 @@
 module Reaction
-  def no_lower(str); str.count("a-z") == 0 end
-  def all_upper(str); str.count("A-Z") > 0 end
   def silence(str); str.strip.empty? end
   def query(str); str.strip[-1] == "?" end
   def loud(str); no_lower(str) && all_upper(str) end
   def panic(str); loud(str) && query(str) end
+  
+  private 
+  def no_lower(str); str.count("a-z") == 0 end
+  def all_upper(str); str.count("A-Z") > 0 end
 end
 
 class Bob 
