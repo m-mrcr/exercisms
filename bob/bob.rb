@@ -1,12 +1,23 @@
-class Bob      
+module Message
+  def no_lower(str); str.count("a-z") == 0 end
+  def all_upper(str); str.count("A-Z") > 0 end
+  
+  def query(str); str.strip[-1] == "?" end
+  def silence(str); str =~ /^[\s]+$/ || str.empty? end
+  def panic(str); no_lower(str) && all_upper(str) && query(str) end
+  def shout(str); no_lower(str) && all_upper(str) && !query(str) end
+end
+
+class Bob 
+  extend Message   
   def self.hey remark
-    if remark =~ /^[\s]+$/ || remark.empty?
+    if silence(remark)
       return "Fine. Be that way!"
-    elsif remark.count("a-z") == 0 && remark.count("A-Z") > 0 && remark[-1] == "?"
+    elsif panic(remark)
       return "Calm down, I know what I'm doing!" 
-    elsif remark.count("a-z") == 0 && remark.count("A-Z") > 0 && remark[-1] != "?"
+    elsif shout(remark)
       return "Whoa, chill out!"
-    elsif remark.delete(" ")[-1] == "?"
+    elsif query(remark)
       return "Sure."
     else
       return "Whatever." 
