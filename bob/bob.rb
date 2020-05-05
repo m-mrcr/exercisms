@@ -1,26 +1,19 @@
-module Message
+module Reaction
   def no_lower(str); str.count("a-z") == 0 end
   def all_upper(str); str.count("A-Z") > 0 end
-  
+  def silence(str); str.strip.empty? end
   def query(str); str.strip[-1] == "?" end
-  def silence(str); str =~ /^[\s]+$/ || str.empty? end
-  def panic(str); no_lower(str) && all_upper(str) && query(str) end
-  def shout(str); no_lower(str) && all_upper(str) && !query(str) end
+  def loud(str); no_lower(str) && all_upper(str) end
+  def panic(str); loud(str) && query(str) end
 end
 
 class Bob 
-  extend Message   
+  extend Reaction   
   def self.hey remark
-    if silence(remark)
-      return "Fine. Be that way!"
-    elsif panic(remark)
-      return "Calm down, I know what I'm doing!" 
-    elsif shout(remark)
-      return "Whoa, chill out!"
-    elsif query(remark)
-      return "Sure."
-    else
-      return "Whatever." 
-    end
+    return "Fine. Be that way!" if silence(remark)
+    return "Calm down, I know what I'm doing!" if panic(remark)
+    return "Whoa, chill out!" if loud(remark)
+    return "Sure." if query(remark)
+    return "Whatever." 
   end
 end
