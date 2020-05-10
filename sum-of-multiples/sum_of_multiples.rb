@@ -1,8 +1,11 @@
-=begin
-Write your code for the 'Sum Of Multiples' exercise in this file. Make the tests in
-`sum_of_multiples_test.rb` pass.
+class SumOfMultiples
+  def initialize *multiples
+    @multiples = multiples
+  end
 
-To get started with TDD, see the `README.md` file in your
-`ruby/sum-of-multiples` directory.
-=end
-
+  def to max
+    charles = (1...max).to_a.map do |n|
+      @multiples.map {|m| n if n % m == 0}
+    end.flatten.compact.uniq.sum
+  end
+end
