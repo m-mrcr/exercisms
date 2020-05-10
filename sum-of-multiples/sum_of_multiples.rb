@@ -1,11 +1,11 @@
 class SumOfMultiples
-  def initialize *multiples
-    @multiples = multiples
+  def initialize *factors
+    @factors = factors
   end
 
   def to max
-    charles = (1...max).to_a.map do |n|
-      @multiples.map {|m| n if n % m == 0}
-    end.flatten.compact.uniq.sum
+    @factors.flat_map do |m| 
+      (1...max).to_a.map {|n| n if n % m == 0}
+    end.compact.uniq.sum
   end
 end
