@@ -1,5 +1,4 @@
 require 'minitest/autorun'
-require 'pry'
 require_relative 'grade_school'
 
 class SchoolTest < Minitest::Test
