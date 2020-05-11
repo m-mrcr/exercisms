@@ -1,8 +1,29 @@
-=begin
-Write your code for the 'Grade School' exercise in this file. Make the tests in
-`grade_school_test.rb` pass.
+class School
+  def initialize
+    @enrollment = []
+  end
 
-To get started with TDD, see the `README.md` file in your
-`ruby/grade-school` directory.
-=end
+  def add (name, grade)
+    group = get_grade(grade)
+    if group 
+      group[:students].sort! << name
+    else
+      @enrollment << {grade: grade, students: [name]}
+    end
+  end
 
+  def students (grade)
+    group = get_grade(grade)
+    group ? group[:students] : []
+  end
+
+  def students_by_grade
+    @enrollment.sort_by {|g| g[:grade]}
+  end
+
+  private
+
+  def get_grade grade
+    @enrollment.detect {|g| g[:grade] == grade}
+  end
+end
