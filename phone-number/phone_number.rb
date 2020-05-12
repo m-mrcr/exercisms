@@ -6,8 +6,8 @@ class PhoneNumber
 
   private
 
-  def self.correctly_formatted input
-    input.length == 10 &&
-    input.split('').values_at(0, 3).all? {|v| v.to_i > 1}
+  def self.correctly_formatted pn
+    pn.length == 10 &&
+    [pn[0], pn[3]].all? {|v| v.to_i > 1}
   end
 end
