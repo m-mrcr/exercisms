@@ -1,8 +1,16 @@
-=begin
-Write your code for the 'Prime Factors' exercise in this file. Make the tests in
-`prime_factors_test.rb` pass.
+class PrimeFactors
+  def self.of limit
+    factors = []
+    prime = 2
 
-To get started with TDD, see the `README.md` file in your
-`ruby/prime-factors` directory.
-=end
-
+    while prime <= limit
+      if limit % prime == 0
+        limit /= prime
+        factors << prime
+      else
+        prime += 1
+      end
+    end
+    factors
+  end
+end
