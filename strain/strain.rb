@@ -1,8 +1,9 @@
-=begin
-Write your code for the 'Strain' exercise in this file. Make the tests in
-`strain_test.rb` pass.
+class Array
+  def keep
+    self.empty? ? [] : self.map {|obj| obj if yield(obj)}.compact
+  end
 
-To get started with TDD, see the `README.md` file in your
-`ruby/strain` directory.
-=end
-
+  def discard
+    self.empty? ? [] : self.map {|obj| obj unless yield(obj)}.compact
+  end
+end
