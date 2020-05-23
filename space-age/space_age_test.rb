@@ -1,5 +1,4 @@
 require 'minitest/autorun'
-require 'pry'
 require_relative 'space_age'
 
 # Common test data version: 1.1.0 8d4df79
